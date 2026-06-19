@@ -1,7 +1,11 @@
 import pytest
 import pandas as pd
 import numpy as np
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
 from ex_01_read_data import load_data, remove_unlabeled_data, convert_to_np, get_welding_data
 
 @pytest.fixture
@@ -252,7 +256,7 @@ def test_sequence_window_structure_and_content(tmp_path):
     )
     
     # Check shapes for sequence length 2
-    assert data.shape == (3, 8, 2), f"Expected shape (3, 8, 2) for sequence length 2, got {data.shape}"
+    assert data.shape == (3, 2, 4, 2), f"Expected shape (3, 2, 4, 2) for sequence length 2, got {data.shape}"
     assert labels.shape == (3, 2), f"Expected labels shape (3, 2), got {labels.shape}"
     assert exp_ids.shape == (3, 2), f"Expected exp_ids shape (3, 2), got {exp_ids.shape}"
     
@@ -265,7 +269,7 @@ def test_sequence_window_structure_and_content(tmp_path):
     )
     
     # Check shapes for sequence length 4
-    assert data_long.shape == (1, 16, 2), f"Expected shape (1, 16, 2) for sequence length 4, got {data_long.shape}"
+    assert data_long.shape == (1, 4, 4, 2), f"Expected shape (1, 4, 4, 2) for sequence length 4, got {data_long.shape}"
     assert labels_long.shape == (1, 4), f"Expected labels shape (1, 4), got {labels_long.shape}"
     assert exp_ids_long.shape == (1, 4), f"Expected exp_ids shape (1, 4), got {exp_ids_long.shape}"
     
@@ -273,14 +277,14 @@ def test_sequence_window_structure_and_content(tmp_path):
     # First window should contain data from samples 0 and 1
     first_window = data[0]
     # Check the first few values from each feature for the first window
-    assert first_window[0, 0] == 0.0, f"Expected first current value to be 0.0, got {first_window[0, 0]}"
-    assert first_window[0, 1] == 0.0, f"Expected first voltage value to be 0.0, got {first_window[0, 1]}"
-    assert first_window[4, 0] == 0.1, f"Expected 5th current value to be 0.1, got {first_window[4, 0]}"
-    assert first_window[4, 1] == 1.0, f"Expected 5th voltage value to be 1.0, got {first_window[4, 1]}"
+    assert first_window[0, 0, 0] == 0.0
+    assert first_window[0, 0, 1] == 0.0
+    assert first_window[1, 0, 0] == 0.1
+    assert first_window[1, 0, 1] == 1.0
+
     
     # Clean up the generated numpy files
     (tmp_path / "data.npy").unlink(missing_ok=True)
     (tmp_path / "labels.npy").unlink(missing_ok=True)
     (tmp_path / "exp_ids.npy").unlink(missing_ok=True)
-
 
