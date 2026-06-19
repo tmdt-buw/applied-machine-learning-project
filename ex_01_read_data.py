@@ -17,13 +17,7 @@ def load_data(data_path: Path) -> pd.DataFrame:
     Raises:
         FileNotFoundError: If the specified data file does not exist.
     """
-    if not data_path.exists():
-        raise FileNotFoundError(f"File {data_path} does not exis. Please download the data from the link provided in the README.md file.")
-    logging.info(f"Loading data from {data_path}")
-    data = pd.read_csv(data_path)
-    data = remove_unlabeled_data(data)
-    data.dropna(inplace=True)
-    return data
+    raise NotImplementedError("Implement Exercise 1.1")
 
 def remove_unlabeled_data(data: pd.DataFrame) -> pd.DataFrame:
     """
@@ -35,7 +29,7 @@ def remove_unlabeled_data(data: pd.DataFrame) -> pd.DataFrame:
     Returns:
         pd.DataFrame: DataFrame with unlabeled data removed.
     """
-    return data[data["labels"] != -1]
+    raise NotImplementedError("Implement Exercise 1.2")
 
 
 def convert_to_np(data: pd.DataFrame) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
@@ -51,19 +45,7 @@ def convert_to_np(data: pd.DataFrame) -> tuple[np.ndarray, np.ndarray, np.ndarra
             - exp_ids (np.ndarray): Array of experiment IDs
             - data (np.ndarray): Combined array of current and voltage features
     """
-    logging.info(f"Converting data to numpy array")
-    labels, exp_ids = data["labels"].values, data["exp_ids"].values
-    data = data.drop(columns=["labels", "exp_ids"])
-    
-    cols_v = data.columns[data.columns.str.startswith("V")]
-    cols_i = data.columns[data.columns.str.startswith("I")]
-    
-    current_data = data[cols_i].values
-    voltage_data = data[cols_v].values
-
-    data = np.stack([current_data, voltage_data], axis=2)
-
-    return labels, exp_ids, data
+    raise NotImplementedError("Implement Exercise 1.3")
 
 
 def create_sliding_windows_first_dim(data: np.ndarray, sequence_length: int) -> np.ndarray:
@@ -77,7 +59,7 @@ def create_sliding_windows_first_dim(data: np.ndarray, sequence_length: int) -> 
     Returns:
         np.ndarray: Windowed data of shape (n_windows, sequence_length, timesteps, features)
     """
-    raise NotImplementedError("This function is not implemented and not needed for exercise 5 & 6")
+    raise NotImplementedError("Implement Exercise 1.4")
 
 def get_welding_data(path: Path, n_samples: int | None = None, return_sequences: bool = False, sequence_length: int = 100) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """
