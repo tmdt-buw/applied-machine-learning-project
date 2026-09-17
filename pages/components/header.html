@@ -1,0 +1,89 @@
+<div class="header-container py-4 bg-light shadow-sm position-fixed top-0 w-100" style="z-index: 1030; left: 0;">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-7 mx-4">
+                <h1 class="display-4 text-primary header-title">Applied Machine Learning Project</h1>
+                <p class="lead text-secondary">Project for the course <a href="https://www.tmdt.uni-wuppertal.de/de/studium-und-lehre/lehrveranstaltungen/applied-machine-learning/" target="_blank">"Applied Machine Learning"</a> at the University of Wuppertal</p>
+            </div>
+            <div class="col-md-4 text-end header-logos">
+                <img src="pages/images/TMDT_Logo_complete.png" alt="Logo 1" class="logo me-3 logo-left-space" style="max-height: 60px;">
+                <img src="pages/images/BUW_Logo-schwarz.png" alt="Logo 2" class="logo" style="max-height: 60px;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Move the navbar inside the header container to ensure proper positioning -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white" style="z-index: 1020;">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link fw-medium" href="#description">Description</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="#exercise1">Exercise 1</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="#exercise2">Exercise 2</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="#exercise3">Exercise 3</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<hr class="mb-4"> 
+
+<style>
+.navbar-nav .nav-link {
+    color: rgba(0, 0, 0, 0.85);
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #0056b3;
+}
+
+.navbar-nav .nav-link:hover::before,
+.navbar-nav .nav-link.active::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 123, 255, 0.1);
+    border-radius: 0.375rem;
+    z-index: -1;
+}
+
+.navbar-nav .nav-link.active {
+        background-color: rgba(0, 123, 255, 0.2);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.5);
+}
+
+.navbar-nav .nav-item {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.navbar-nav {
+    margin-left: 0; /* Changed from auto to 0 */
+}
+@media (max-width: 991px) {
+    .navbar-nav {
+    margin-left: 0;
+    }
+    .navbar-nav .nav-item {
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+</style> 
