@@ -28,8 +28,8 @@ htmlcov/
 coverage.xml
 *.cover
 
-# Jupyter Notebook
-.ipynb_checkpoints
+# marimo
+__marimo__/
 
 # Local development settings
 .env

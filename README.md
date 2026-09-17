@@ -49,6 +49,7 @@ In this exercise, you will implement functions to load, preprocess, and prepare 
 ## Implementation Details
 
 - **Programming Language**: Python
+- **Notebooks**: [marimo](https://marimo.io) (reactive, git-friendly `.py` notebooks)
 - **Key Libraries**: NumPy, Pandas, Scikit-learn, Matplotlib, Plotly, Seaborn
 - **Custom Implementation**: K-means algorithm with multiple distance metrics
 - **Interactive Visualization**: Web-based visualization for exploring welding data
@@ -76,6 +77,31 @@ In this exercise, you will implement functions to load, preprocess, and prepare 
    source .venv/bin/activate # On Linux/macOS
    .venv\Scripts\activate # On Windows
    ```
+
+### Working with the notebooks (marimo)
+
+The exercise notebooks (`ex_02_plot_time_series.py`, `ex_03_feature_plots.py`, `ex_04_clustering.py`) are [marimo](https://marimo.io) notebooks. They are plain Python files, so they diff cleanly in git and can be imported, tested, and run as scripts.
+
+- **Edit a notebook interactively**
+  ```bash
+  uv run marimo edit ex_02_plot_time_series.py
+  ```
+- **Run a notebook as a read-only app**
+  ```bash
+  uv run marimo run ex_04_clustering.py
+  ```
+- **Execute a notebook as a script**
+  ```bash
+  uv run python ex_03_feature_plots.py
+  ```
+- **Lint the notebooks**
+  ```bash
+  uv run marimo check ex_02_plot_time_series.py ex_03_feature_plots.py ex_04_clustering.py
+  ```
+
+marimo requires each variable to be defined in exactly one cell, so the notebooks use suffixed names (for example `data_seq`, `data_cycles`) where the original Jupyter versions re-assigned `data`. Written answers go in `mo.md(...)` cells.
+
+To convert any remaining Jupyter notebook, run `uv run marimo convert my_notebook.ipynb -o my_notebook.py`.
 
 ## Enable Github Pages
 
